@@ -1,0 +1,7 @@
+body {
+    margin: 20pt;
+}
+
+#output {
+    word-wrap: break-word;
+}
