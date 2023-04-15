@@ -9,6 +9,4 @@ func main() {
 	}()
 
 	libraries.EncryptFn()
-
-	<-c
 }
