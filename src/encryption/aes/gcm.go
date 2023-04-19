@@ -16,17 +16,17 @@ type (
 	gcmCipherText string
 )
 
-func GCM(inp string) encryption.Encryption {
+func GCM(inp string) *gcmString {
 	c := gcmString(inp)
 	return &c
 }
 
-func (k *gcmString) PlainText() encryption.PlainText {
+func (k *gcmString) PlainText() *gcmPlainText {
 	c := string(*k)
 	p := gcmPlainText(c)
 	return &p
 }
-func (k *gcmString) CipherText() encryption.CipherText {
+func (k *gcmString) CipherText() *gcmCipherText {
 	c := string(*k)
 	p := gcmCipherText(c)
 	return &p
@@ -63,7 +63,7 @@ func (e *gcmPlainText) Encrypt(key []byte) (err error) {
 func (e *gcmPlainText) String() string {
 	return string(*e)
 }
-func (e *gcmPlainText) AsCipherText() encryption.CipherText {
+func (e *gcmPlainText) AsCipherText() *gcmCipherText {
 	s := e.String()
 	v := gcmCipherText(s)
 	return &v
@@ -112,7 +112,7 @@ func (e *gcmCipherText) String() string {
 	return string(*e)
 }
 
-func (e *gcmCipherText) AsPlainText() encryption.PlainText {
+func (e *gcmCipherText) AsPlainText() *gcmPlainText {
 	s := e.String()
 	v := gcmPlainText(s)
 	return &v
