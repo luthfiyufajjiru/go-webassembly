@@ -1,9 +1,7 @@
 import wasm from "../vendor/wasm/load.js";
 
-async function Encrypt(input) {
-    return await wasm().then((res) => {
-        return res.encrypt(input)
-    })
+function Encrypt(input) {
+    return wasm.encrypt(input);
 }
 
 export {Encrypt}
