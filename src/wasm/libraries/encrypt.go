@@ -8,7 +8,6 @@ import (
 
 func EncryptFn(key []byte) {
 	js.Global().Set("encrypt", js.FuncOf(func(this js.Value, args []js.Value) interface{} {
-		js.Global().Call("alert", string(key))
 		_plaintext := []byte(args[0].String())
 		plaintext := aes.GCM(string(_plaintext)).PlainText()
 		plaintext.Encrypt(key)
