@@ -3,10 +3,19 @@ package libraries
 import (
 	"encoding/base64"
 	"encryption/aes"
+	"os"
 	"syscall/js"
+
+	"github.com/joho/godotenv"
 )
 
-var key = []byte("AES256Key-32Characters1234567890")
+var key []byte
+
+// init and read the env using godotenv
+func init() {
+	_ = godotenv.Load()
+	key = []byte(os.Getenv("KEY"))
+}
 
 func EncryptFn() {
 	js.Global().Set("encrypt", js.FuncOf(func(this js.Value, args []js.Value) interface{} {
