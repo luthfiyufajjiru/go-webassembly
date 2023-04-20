@@ -4,4 +4,8 @@ function Encrypt(input) {
     return wasm.encrypt(input);
 }
 
-export {Encrypt}
+function Decrypt(input) {
+    return wasm.decrypt(input);
+}
+
+export {Encrypt, Decrypt}

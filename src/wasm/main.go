@@ -9,4 +9,5 @@ func main() {
 	}()
 
 	libraries.EncryptFn()
+	libraries.DecryptFn()
 }

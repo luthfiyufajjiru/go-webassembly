@@ -16,3 +16,13 @@ func EncryptFn() {
 		return base64.StdEncoding.EncodeToString([]byte(plaintext.String()))
 	}))
 }
+
+func DecryptFn() {
+	js.Global().Set("decrypt", js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+		_cipher := []byte(args[0].String())
+		_cipher, _ = base64.StdEncoding.DecodeString(string(_cipher))
+		cipher := aes.GCM(string(_cipher)).CipherText()
+		cipher.Decrypt(key)
+		return cipher.String()
+	}))
+}

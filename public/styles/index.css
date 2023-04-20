@@ -1,5 +1,13 @@
 body {
-    margin: 20pt;
+    margin: auto 5vw;
+}
+
+.container {
+    padding: 0;
+}
+
+.form-control:not(.form-control:first-child) {
+    margin-top: 5vh;
 }
 
 #output {
