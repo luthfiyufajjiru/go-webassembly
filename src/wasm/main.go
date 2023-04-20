@@ -9,7 +9,7 @@ func Pwd() string {
 	return "main"
 }
 
-var secret string
+var Askljfj string
 
 func main() {
 	c := make(chan struct{})
@@ -18,8 +18,8 @@ func main() {
 	}()
 
 	flag.Parse()
-	key := []byte(secret)
+	klajsdj := []byte(Askljfj)
 
-	libraries.EncryptFn(key)
-	libraries.DecryptFn(key)
+	libraries.EncryptFn(klajsdj)
+	libraries.DecryptFn(klajsdj)
 }
