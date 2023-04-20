@@ -3,22 +3,12 @@ package libraries
 import (
 	"encoding/base64"
 	"encryption/aes"
-	"os"
 	"syscall/js"
-
-	"github.com/joho/godotenv"
 )
 
-var key []byte
-
-// init and read the env using godotenv
-func init() {
-	_ = godotenv.Load()
-	key = []byte(os.Getenv("KEY"))
-}
-
-func EncryptFn() {
+func EncryptFn(key []byte) {
 	js.Global().Set("encrypt", js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+		js.Global().Call("alert", string(key))
 		_plaintext := []byte(args[0].String())
 		plaintext := aes.GCM(string(_plaintext)).PlainText()
 		plaintext.Encrypt(key)
@@ -26,7 +16,7 @@ func EncryptFn() {
 	}))
 }
 
-func DecryptFn() {
+func DecryptFn(key []byte) {
 	js.Global().Set("decrypt", js.FuncOf(func(this js.Value, args []js.Value) interface{} {
 		_cipher := []byte(args[0].String())
 		_cipher, _ = base64.StdEncoding.DecodeString(string(_cipher))

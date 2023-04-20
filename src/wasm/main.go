@@ -1,6 +1,15 @@
 package main
 
-import "main/libraries"
+import (
+	"flag"
+	"main/libraries"
+)
+
+func Pwd() string {
+	return "main"
+}
+
+var secret string
 
 func main() {
 	c := make(chan struct{})
@@ -8,6 +17,9 @@ func main() {
 		<-c
 	}()
 
-	libraries.EncryptFn()
-	libraries.DecryptFn()
+	flag.Parse()
+	key := []byte(secret)
+
+	libraries.EncryptFn(key)
+	libraries.DecryptFn(key)
 }
