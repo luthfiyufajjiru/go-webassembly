@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "go-web-assembly",
     "public": "public",
     "ignore": [
       "firebase.json",
